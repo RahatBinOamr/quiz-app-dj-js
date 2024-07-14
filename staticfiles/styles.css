@@ -1,0 +1,7 @@
+.not-visible {
+  display: none !important;
+}
+.ct{
+color: red;
+background-color: black;
+}

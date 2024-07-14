@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}
+quizes
+{% endblock title %}
+{% load static %}
+{% block script %}
+<script src=" {% static 'quizes/quizes.js' %} " defer></script>
+{% endblock script %}
+
+{% block content %}
+
+<div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">start?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="quiz-model-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success" id="start-btn">Start</button>
+      </div>
+    </div>
+  </div>
+</div>
+<h1>Quiz List</h1>
+<hr>
+{% for quiz in quiz_list %}
+<button
+class="btn btn-primary model-button mt-2" 
+type="button"
+data-pk = {{quiz.pk}}
+data-name = {{quiz.name}}
+data-topic = {{quiz.topic}}
+data-number-of-questions = {{quiz.number_of_questions}}
+data-time = {{quiz.time}}
+data-difficulty = {{quiz.difficulty}}
+data-required-score-to-pass = {{quiz.required_score_to_pass}}
+data-bs-toggle="modal" 
+data-bs-target="#quizModal"
+>
+{{quiz.name}}
+</button> <br>
+{% endfor %}
+
+{% endblock content %}
